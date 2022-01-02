@@ -42,7 +42,22 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div')
 
+  function logText(e) {
+    // console.log(this) // the clicked div(s)
+    // console.log(this.classList) // a DOMTokenList objectthe class of the clicked div(s) i.e., one, two, and/or three
+    console.log(this.classList.value) // the class of the clicked div(s) i.e., one, two, and/or three
+    
+    // e.stopPropagation() // stop triggering events on parents on the way up -- use w/ capture: false
+    
+
+  }
+  //
+
+  // divs.forEach(div => div.addEventListener('click', logText)) // capture: False by default
+  // divs.forEach(div => div.addEventListener('click', logText, {capture: true})) // capture events bubbling down instead of up
+  divs.forEach(div => div.addEventListener('click', logText, { once: true } )) // remove the listener after it triggers once
 </script>
 </body>
 </html>
